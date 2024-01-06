@@ -7,23 +7,33 @@ const Home = () => {
   const navigate = useNavigate();
   const[cookies,removeCookie] = useCookies([]);
   const[username, setUsername] = useState("");
-  useEffect(()=>{
-    const verifyCookie = async () =>{
-      if(!cookies.token)
-      {
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
         navigate("/auth");
       }
-      const {data}  = await axios.post(
-        "http://localhost:4000",
-        {},
-        {withCredentials:true}
-      );
-      const {status, user} = data;
-      setUsername(user);
-      return status;
-    }
+  
+      try {
+        const { data } = await axios.post(
+          "http://localhost:4000",
+          {},
+          { withCredentials: true }
+        );
+  
+        const { status, user } = data;
+        setUsername(user);
+        return status;
+      } catch (error) {
+        // Handle error, e.g., redirect to authentication page
+        console.error("Error verifying token:", error);
+        navigate("/auth");
+      }
+    };
+  
     verifyCookie();
-  },[cookies,navigate, removeCookie]);
+  }, [cookies, navigate, removeCookie]);
+  
+
   const Logout = () =>{
     removeCookie("token");
     navigate("/auth");

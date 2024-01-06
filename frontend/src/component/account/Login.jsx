@@ -2,6 +2,7 @@ import { Box, Button, TextField, styled, Typography } from "@mui/material";
 import logo from "../assets/logo4.png";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Component = styled(Box)`
   width: 400px;
@@ -18,7 +19,7 @@ const Image = styled("img")({
   loading: "lazy",
 });
 
-const LoginButton = styled(Button) `
+const LoginButton = styled(Button)`
    text-transform: none;
    background: #8C52FF;
    color: #fff;
@@ -54,6 +55,7 @@ const SignUpInitialValues = {
 }
 
 const Login = () => {
+  const navigate = useNavigate();
   const [account, toggleAccount] = useState('login');
   const [signup, setSignup] = useState(SignUpInitialValues);
   const [loginVal, setLoginVal] = useState({
@@ -71,6 +73,10 @@ const Login = () => {
 
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
+    if (!signup.email || !signup.password || !signup.username) {
+      alert('All fields are required.');
+      return;
+    }
     try {
       const { data } = await axios.post(
         "http://localhost:4000/signup",
@@ -104,6 +110,10 @@ const Login = () => {
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
+    if (!loginVal.email || !loginVal.password) {
+      alert('All fields are required.');
+      return;
+    }
     try {
       const { data } = await axios.post(
         "http://localhost:4000/login",
@@ -115,11 +125,13 @@ const Login = () => {
       console.log(data);
 
       if (data.success) {
-        alert('Login successful.');
+        // alert('Login successful.');
         setLoginVal({
           email: "",
           password: ""
         }); // Clear input fields
+        navigate("/")
+        
       } else {
         alert('Incorrect Email/Password');
       }
@@ -139,7 +151,9 @@ const Login = () => {
             <form onSubmit={handleSubmitLogin}>
               <TextField variant="standard" onChange={onInputChangeLogin} name="email" label="Enter Email" value={loginVal.email} />
               <TextField variant="standard" onChange={onInputChangeLogin} name="password" label="Enter password" value={loginVal.password} />
+              <Box>
               <LoginButton variant="contained" type="submit">Login</LoginButton>
+              </Box>
               <Text variant="p" component="p" style={{ textAlign: "center" }}>
                 OR
               </Text>
@@ -152,7 +166,9 @@ const Login = () => {
               <TextField variant="standard" onChange={onInputChangeSignup} name="email" label="Enter Email" value={signup.email} />
               <TextField variant="standard" onChange={onInputChangeSignup} name="password" label="Enter password" value={signup.password} />
               <TextField variant="standard" onChange={onInputChangeSignup} name="username" label="Enter username" value={signup.username} />
+              <Box>
               <SignUpButton type="submit">SignUp</SignUpButton>
+              </Box>
               <Text variant="p" component="p" style={{ textAlign: "center" }}>
                 OR
               </Text>
