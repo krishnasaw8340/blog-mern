@@ -4,18 +4,16 @@ import Login from './component/account/Login';
 import Home from './component/Pages/Home';
 
 function App() {
+  console.log("Auth Token:", localStorage.getItem("auth_token"));
+
   return (
     <div style={{ marginTop: 20 }}>
       <Routes>
         <Route
           path="/"
           element={
-            localStorage.getItem("auth_token") ? (
-              <Home />
-            ) : (
-              <Navigate to="/auth" />
-            )
-          }
+          
+              <Home />}
         />
         <Route path="/auth" element={<Login />} />
       </Routes>

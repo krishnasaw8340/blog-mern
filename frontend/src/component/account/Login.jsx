@@ -132,8 +132,7 @@ const Login = () => {
           email: "",
           password: ""
         }); // Clear input fields
-        navigate("/")
-        
+        navigate("/") 
       } else {
         alert('Incorrect Email/Password');
       }
