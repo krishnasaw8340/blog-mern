@@ -21,6 +21,7 @@ const Image = styled("img")({
 
 const LoginButton = styled(Button)`
    text-transform: none;
+   width:100%;
    background: #8C52FF;
    color: #fff;
    border-radius: 2px;
@@ -28,6 +29,7 @@ const LoginButton = styled(Button)`
 
 const SignUpButton = styled(Button)`
   text-transform: none;
+  width:100%;
   background: white;
   color: #8C52FF;
   border-radius: 2px;
@@ -149,8 +151,8 @@ const Login = () => {
         {account === 'login' ? (
           <Wrapper>
             <form onSubmit={handleSubmitLogin}>
-              <TextField variant="standard" onChange={onInputChangeLogin} name="email" label="Enter Email" value={loginVal.email} />
-              <TextField variant="standard" onChange={onInputChangeLogin} name="password" label="Enter password" value={loginVal.password} />
+              <TextField variant="standard" fullWidth id="fullWidth" onChange={onInputChangeLogin} name="email" label="Enter Email" value={loginVal.email} />
+              <TextField variant="standard" fullWidth id="fullWidth"  onChange={onInputChangeLogin} name="password" label="Enter password" value={loginVal.password} />
               <Box>
               <LoginButton variant="contained" type="submit">Login</LoginButton>
               </Box>
@@ -163,9 +165,9 @@ const Login = () => {
         ) : (
           <Wrapper>
             <form onSubmit={handleSubmitSignup}>
-              <TextField variant="standard" onChange={onInputChangeSignup} name="email" label="Enter Email" value={signup.email} />
-              <TextField variant="standard" onChange={onInputChangeSignup} name="password" label="Enter password" value={signup.password} />
-              <TextField variant="standard" onChange={onInputChangeSignup} name="username" label="Enter username" value={signup.username} />
+              <TextField variant="standard"  fullWidth id="fullWidth"  onChange={onInputChangeSignup} name="email" label="Enter Email" value={signup.email} />
+              <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="password" label="Enter password" value={signup.password} />
+              <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="username" label="Enter username" value={signup.username} />
               <Box>
               <SignUpButton type="submit">SignUp</SignUpButton>
               </Box>
