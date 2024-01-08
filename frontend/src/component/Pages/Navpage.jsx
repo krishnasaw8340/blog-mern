@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navpage = () => {
   return (
-    <div>Navpage</div>
+    <div>This is nav page:</div>
   )
 }
 
