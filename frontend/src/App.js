@@ -1,24 +1,28 @@
-import './App.css';
-import { Route, Routes, Navigate } from "react-router-dom";
-import Login from './component/account/Login';
-import Home from './component/Pages/Home';
-
+import "./App.css";
+import { Route, Routes, Navigate, Outlet } from "react-router-dom";
+import Login from "./component/account/Login";
+import Home from "./component/Pages/Home";
+import { useState } from "react";
+const PrivateRoute = ({ isAuthenticate, ...props }) => {
+  return isAuthenticate ? <Outlet /> : <Navigate replace to="/auth" />;
+};
 function App() {
-  console.log("Auth Token:", localStorage.getItem("auth_token"));
-
+  const [isAuthenticate, isUserAuthenticate] = useState(false);
   return (
     <div style={{ marginTop: 20 }}>
       <Routes>
         <Route
-          path="/"
-          element={
-          
-              <Home />}
+          path="/auth"
+          element={<Login isUserAuthenticated={isUserAuthenticate} />}
         />
-        <Route path="/auth" element={<Login />} />
+        <Route
+          path="/"
+          element={<PrivateRoute isAuthenticate={isAuthenticate} />}
+        >
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </div>
   );
 }
-
 export default App;

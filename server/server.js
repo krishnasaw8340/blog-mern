@@ -8,9 +8,11 @@ const app = express();
 const user = process.env.DB_USERNAME
 const pass = process.env.DB_PASSWORD
 const PORT = process.env.PORT
+const session  = require("express-session");
+
 
 const Connection = async() =>{
-    const URL = `mongodb+srv://${user}:${pass}@medfist.jn81oke.mongodb.net/?retryWrites=true&w=majority`;
+    const URL  = `mongodb+srv://${user}:${pass}@medfist.h4p3tmw.mongodb.net/?retryWrites=true&w=majority`
     try{
         await mongoose.connect(URL);
         console.log("Database Connected");
@@ -30,5 +32,14 @@ app.listen(PORT, ()=>{
     console.log(`Server is running on the ${PORT}`);
 })
 app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000*60*60*24
+    }
+}))
 app.use(express.json());
 app.use("/", authRoute);
