@@ -15,7 +15,6 @@ const Home = () => {
       if (!cookies.token) {
         navigate('/auth');
       }
-
       try {
         const { data } = await axios.post(
           'http://localhost:4000',
@@ -24,6 +23,7 @@ const Home = () => {
         );
 
         const { status, user } = data;
+        
         setUsername(user);
         return status;
       } catch (error) {
