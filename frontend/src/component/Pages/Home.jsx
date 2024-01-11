@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { Box } from '@mui/material';
 import Header from './Header/Header';
+import NavBar from './Header/NavBar';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Home = () => {
         setUsername(user);
         return status;
       } catch (error) {
-        // Handle error, e.g., redirect to the authentication page
+       
         console.error('Error verifying token:', error);
         navigate('/auth');
       }
@@ -44,7 +45,11 @@ const Home = () => {
   return (
     <div className="home_page">
       <Box>
-        <Header />
+        <NavBar 
+        onLogoutOut={Logout}
+        userData = {username}
+        />
+        {/* <Header/> */}
       </Box>
       <nav>
         <section>
@@ -54,7 +59,7 @@ const Home = () => {
       <h4>
         Welcome <span>{username}</span>
       </h4>
-      <button onClick={Logout}>LOGOUT</button>
+      {/* <button onClick={Logout}>LOGOUT</button> */}
     </div>
   );
 };
