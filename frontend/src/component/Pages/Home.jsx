@@ -56,10 +56,6 @@ const Home = () => {
           <span>MedFist</span>
         </section>
       </nav>
-      <h4>
-        Welcome <span>{username}</span>
-      </h4>
-      {/* <button onClick={Logout}>LOGOUT</button> */}
     </div>
   );
 };

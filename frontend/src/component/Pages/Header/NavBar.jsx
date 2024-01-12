@@ -1,5 +1,6 @@
 import React from 'react'
-import { AppBar ,Button,Toolbar, Typography, styled} from '@mui/material';
+import { AppBar, Button, Toolbar, Typography, styled, Box } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 const Component = styled(AppBar)`
     background: #ffffff;
     color: #000;
@@ -11,25 +12,38 @@ const Container = styled(Toolbar)`
     justify-content: center;
     & > p {
         padding:20px;
-    }
-    
+    }   
 `
-const NavBar = ({onLogoutOut, userData}) => {
-  return (
-   <Component>
-    <Typography >
-        MedFist
-    </Typography>
-    <Container>
-        <Typography>Home </Typography>
-        <Typography>About </Typography>
-        <Typography>Contact </Typography>
-    </Container>
-    <Typography>{userData}</Typography>
-    <Button onClick={onLogoutOut}>Logout</Button>
-    
-   </Component>
-  )
+const RightBox = styled(Box)`
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+`
+const AvatarContainer = styled(Box)`
+  margin-right: 10px; /* Adjust the margin between Avatar and Typography as needed */
+`;
+const NavBar = ({ onLogoutOut, userData }) => {
+    return (
+        <Component>
+            <RightBox >
+                MedFist
+            </RightBox>
+            <Container>
+                <Typography>Home </Typography>
+                <Typography>About </Typography>
+                <Typography>Contact </Typography>
+            </Container>
+            <RightBox>
+                <AvatarContainer>
+                    <Avatar sx={{ bgcolor: '#8C52FF', }}></Avatar>
+                </AvatarContainer>
+                <Typography>  {userData} </Typography>
+                <Button onClick={onLogoutOut} sx={{ color: 'red' }}>Logout</Button>
+            </RightBox>
+
+        </Component>
+    )
 }
 
 export default NavBar;
