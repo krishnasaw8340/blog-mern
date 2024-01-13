@@ -5,8 +5,9 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 import Banner from './Banner/Banner';
 import NavBar from './Header/NavBar';
+import Categories from './Categories/Categories';
 
-const Home = () => {
+const Welcome = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState('');
@@ -43,15 +44,17 @@ const Home = () => {
 
   return (
     <div className="home_page">
-      <NavBar onLogoutOut={Logout} userData={username} />
       <Box>
-        <h2>Hello</h2>
+      <NavBar onLogoutOut={Logout} userData={username} />
       </Box>
       <Box>
         <Banner />
+      </Box>
+      <Box>
+        <Categories/>
       </Box>
     </div>
   );
 };
 
-export default Home;
+export default Welcome;
