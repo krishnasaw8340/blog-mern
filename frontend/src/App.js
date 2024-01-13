@@ -5,7 +5,9 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import Login from "./component/account/Login";
 import Welcome from "./component/Pages/Welcome";
-
+import CreatePost from "./component/Pages/Createpost/CreatePost"
+import Contact from "./component/Pages/Contact/Contact";
+import About from "./component/Pages/About/About";
 function App() {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -55,6 +57,19 @@ function App() {
           path='/'
           element={username && cookies.token ? <Welcome onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
         />
+         <Route
+          path='/create'
+          element={username && cookies.token ? <CreatePost onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
+        />
+         <Route
+          path='/contact'
+          element={username && cookies.token ? <Contact onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
+        />
+         <Route
+          path='/about'
+          element={username && cookies.token ? <About onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
+        />
+        
       </Routes>
     </div>
   );

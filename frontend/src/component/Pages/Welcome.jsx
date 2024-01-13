@@ -10,10 +10,8 @@ const MainBody = styled(Box)`
 const Welcome = ({onLogOut, userName}) => {
   return (
     <div>
-      <Box>
       <NavBar onLogoutOut={onLogOut} userName={userName}/>
         <Banner />
-      </Box>
       <MainBody>
         <Grid container>
           <Grid item lg={2} sm={2} xs={12}>

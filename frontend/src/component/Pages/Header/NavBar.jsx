@@ -11,11 +11,25 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const MainBody = styled(AppBar)`
    background-color:#ffffff;
    color: #000;
   `
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  padding: 8px;
+  color: inherit;
+  transition: font-size 0.3s ease-in-out;
+
+  &:hover {
+    color: #8C52FF;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 1.1em; /* Increase font size on hover */
+  }
+`;
 const ContainerMenu = styled(Box)`
   display:flex;
   flex-direction:row;
@@ -111,12 +125,16 @@ function NavBar({ onLogoutOut, userName }) {
               }}
             >
               <ContainerMenuMobile>
-                <Typography>Home </Typography>
-                <Typography>About</Typography>
-                <Typography>Contact </Typography>
-
+                <StyledLink to="/">
+                  <Typography>Home</Typography>
+                </StyledLink>
+                <StyledLink to="/about">
+                  <Typography>About</Typography>
+                </StyledLink>
+                <StyledLink to="/contact">
+                  <Typography>Contact</Typography>
+                </StyledLink>
               </ContainerMenuMobile>
-
             </Menu>
           </Box>
           <Typography
@@ -139,9 +157,15 @@ function NavBar({ onLogoutOut, userName }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <ContainerMenu>
-              <Typography>Home </Typography>
-              <Typography>About </Typography>
-              <Typography>Contact </Typography>
+              <StyledLink to="/">
+                <Typography>Home</Typography>
+              </StyledLink>
+              <StyledLink to="/about">
+                <Typography>About</Typography>
+              </StyledLink>
+              <StyledLink to="/contact">
+                <Typography>Contact</Typography>
+              </StyledLink>
             </ContainerMenu>
 
           </Box>
@@ -151,8 +175,11 @@ function NavBar({ onLogoutOut, userName }) {
               <Typography>{userName}</Typography>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar src="/broken-image.jpg"
-                    sx={{ bgcolor: '8C52FF' }}
+                  <Avatar
+                    src="/broken-image.jpg"
+                    sx={{
+                      bgcolor: '#8C52FF', // Set the background color
+                    }}
                   />
                 </IconButton>
               </Tooltip>
