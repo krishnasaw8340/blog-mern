@@ -46,8 +46,8 @@ const Welcome = () => {
   return (
     <div className="home_page">
       <Box>
-      {/* <NavBar onLogoutOut={Logout} userData={username} /> */}
-      <Header/>
+      <NavBar onLogoutOut={Logout} userData={username} />
+      {/* <Header/> */}
 
         <Banner />
       </Box>
