@@ -6,7 +6,6 @@ import { Box, Grid } from '@mui/material';
 import Banner from './Banner/Banner';
 import NavBar from './Header/NavBar';
 import Categories from './Categories/Categories';
-import Header from './Header/Header';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -47,8 +46,6 @@ const Welcome = () => {
     <div className="home_page">
       <Box>
       <NavBar onLogoutOut={Logout} userData={username} />
-      {/* <Header/> */}
-
         <Banner />
       </Box>
 

@@ -8,15 +8,22 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import AdbIcon from '@mui/icons-material/Adb';
 import styled from '@emotion/styled';
 
 const ContainerMenu = styled(Box)`
   display:flex;
   flex-direction:row;
-  padding-right:20px;
+  & >  p {
+    padding-right: 50px;
+  }
+`
+const ContainerMenuMobile = styled(Box)`
+  display:flex;
+  flex-direction:column;
+  & >  p {
+    padding: 2px 5px 20px 3px;
+  }
 `
 
 function NavBar({onLogoutOut,userData}) {
@@ -89,9 +96,13 @@ function NavBar({onLogoutOut,userData}) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-               <Typography>Home </Typography>
+                <ContainerMenuMobile>
+                <Typography>Home </Typography>
                 <Typography>About</Typography>
                 <Typography>Contact </Typography>
+
+                </ContainerMenuMobile>
+               
             </Menu>
           </Box>
           <Typography
@@ -114,10 +125,9 @@ function NavBar({onLogoutOut,userData}) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <ContainerMenu>
-            <Typography>Home </Typography>
+                <Typography>Home </Typography>
                 <Typography>About </Typography>
                 <Typography>Contact </Typography>
-
             </ContainerMenu>
                 
           </Box>
