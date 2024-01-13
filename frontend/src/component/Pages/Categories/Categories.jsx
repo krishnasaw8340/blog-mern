@@ -1,41 +1,38 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { Button, Table, TableBody, TableCell, TableHead, TableRow, Box } from '@mui/material'
 import React from 'react'
 import { categories } from './data'
 import styled from '@emotion/styled'
 
-const StyledTable = styled(Table)
-`   border:2px solid rgba(224,224,224,1);
- `
- const StyleButton = styled(Button)`
-    width: 85%;
-    background: #6495ED;
-    color: #fff; 
- `
+const StyledTable = styled(Table)`
+  border: 2px solid rgba(224, 224, 224, 1);
+`;
+
+const StyleButton = styled(Button)`
+  width: 85%;
+  background: #8C52FF;
+  color: #fff;
+  margin-bottom: 16px;
+`;
 const Categories = () => {
   return (
     <>
-    <StyleButton variant='contained'>Add Blog</StyleButton>
-    <StyledTable>
-        <TableHead>
+        <StyleButton variant="contained">Add Blog</StyleButton>
+        <StyledTable>
+          <TableHead>
             <TableRow>
-                <TableCell>
-                    All Categories
-                </TableCell>
+              <TableCell>All Categories</TableCell>
             </TableRow>
-        </TableHead>
-        <TableBody>
-            {
-                categories.map(category=>(
-                    <TableRow>
-                         <TableCell>{category.type}</TableCell>
-                    </TableRow>
-                ))
-            }
-           
-        </TableBody>
-    </StyledTable>
+          </TableHead>
+          <TableBody>
+            {categories.map((category) => (
+              <TableRow key={category.id}>
+                <TableCell>{category.type}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </StyledTable>
     </>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

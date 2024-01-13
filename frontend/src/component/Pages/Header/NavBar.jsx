@@ -12,6 +12,10 @@ import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 
+const MainBody = styled(AppBar)`
+   background-color:#ffffff;
+   color: #000;
+  `
 const ContainerMenu = styled(Box)`
   display:flex;
   flex-direction:row;
@@ -27,8 +31,16 @@ const ContainerMenuMobile = styled(Box)`
     padding: 2px 5px 20px 3px;
   }
 `
+const UserLogout = styled(Box)`
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   & >  p {
+    padding: 0px 10px 0px 3px;
+  }
+`
 
-function NavBar({onLogoutOut}) {
+function NavBar({ onLogoutOut, userName }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -47,15 +59,15 @@ function NavBar({onLogoutOut}) {
     setAnchorElUser(null);
   };
 
+
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <MainBody position="static">
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -98,13 +110,13 @@ function NavBar({onLogoutOut}) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-                <ContainerMenuMobile>
+              <ContainerMenuMobile>
                 <Typography>Home </Typography>
                 <Typography>About</Typography>
                 <Typography>Contact </Typography>
 
-                </ContainerMenuMobile>
-               
+              </ContainerMenuMobile>
+
             </Menu>
           </Box>
           <Typography
@@ -127,21 +139,24 @@ function NavBar({onLogoutOut}) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <ContainerMenu>
-                <Typography>Home </Typography>
-                <Typography>About </Typography>
-                <Typography>Contact </Typography>
+              <Typography>Home </Typography>
+              <Typography>About </Typography>
+              <Typography>Contact </Typography>
             </ContainerMenu>
-                
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar src="/broken-image.jpg" 
-               sx={{ bgcolor: '8C52FF' }}
-               />
-              </IconButton>
-            </Tooltip>
+            <UserLogout>
+              <Typography>{userName}</Typography>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar src="/broken-image.jpg"
+                    sx={{ bgcolor: '8C52FF' }}
+                  />
+                </IconButton>
+              </Tooltip>
+            </UserLogout>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -158,12 +173,12 @@ function NavBar({onLogoutOut}) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Button textAlign="center"sx={{ color: 'red' }} minWidth={'80px'}  onClick={onLogoutOut}>Logout</Button>
+              <Button textAlign="center" sx={{ color: 'red' }} minWidth={'80px'} onClick={onLogoutOut}>Logout</Button>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </MainBody>
   );
 }
 export default NavBar;

@@ -53,7 +53,7 @@ function App() {
         <Route path='/auth' element={<Login />} />
         <Route
           path='/'
-          element={username && cookies.token ? <Welcome onLogOut={Logout}/> : <Navigate to="/auth" />}
+          element={username && cookies.token ? <Welcome onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
         />
       </Routes>
     </div>
