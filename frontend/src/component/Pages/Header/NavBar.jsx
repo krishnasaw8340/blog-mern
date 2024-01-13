@@ -10,10 +10,12 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
+import { Button } from '@mui/material';
 
 const ContainerMenu = styled(Box)`
   display:flex;
   flex-direction:row;
+  padding-left:50px;
   & >  p {
     padding-right: 50px;
   }
@@ -26,7 +28,7 @@ const ContainerMenuMobile = styled(Box)`
   }
 `
 
-function NavBar({onLogoutOut,userData}) {
+function NavBar({onLogoutOut}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -135,7 +137,9 @@ function NavBar({onLogoutOut,userData}) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar src="/broken-image.jpg" 
+               sx={{ bgcolor: '8C52FF' }}
+               />
               </IconButton>
             </Tooltip>
             <Menu
@@ -154,7 +158,7 @@ function NavBar({onLogoutOut,userData}) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Typography textAlign="center"sx={{ color: 'red' }} minWidth={'80px'}  onClick={onLogoutOut}>Logout</Typography>
+              <Button textAlign="center"sx={{ color: 'red' }} minWidth={'80px'}  onClick={onLogoutOut}>Logout</Button>
             </Menu>
           </Box>
         </Toolbar>

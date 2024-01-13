@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -43,13 +42,18 @@ function App() {
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
 
+  const Logout = () => {
+    removeCookie('token');
+    navigate('/auth');
+  };
+
   return (
-    <div style={{ marginTop: 20 }}>
+    <div>
       <Routes>
         <Route path='/auth' element={<Login />} />
         <Route
           path='/'
-          element={username && cookies.token ? <Welcome /> : <Navigate to="/auth" />}
+          element={username && cookies.token ? <Welcome onLogOut={Logout}/> : <Navigate to="/auth" />}
         />
       </Routes>
     </div>
