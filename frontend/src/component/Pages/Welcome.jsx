@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Banner from './Banner/Banner';
 import NavBar from './Header/NavBar';
 import Categories from './Categories/Categories';
@@ -46,12 +46,18 @@ const Welcome = () => {
     <div className="home_page">
       <Box>
       <NavBar onLogoutOut={Logout} userData={username} />
-      </Box>
-      <Box>
         <Banner />
       </Box>
+
       <Box>
+        <Grid container>
+          <Grid item lg={2} sm={2} xs={12}>
         <Categories/>
+          </Grid>
+          <Grid container item xs={12} sm={10} lg={10}>
+              Post
+          </Grid>
+        </Grid>
       </Box>
     </div>
   );
