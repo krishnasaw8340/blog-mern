@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { Box } from '@mui/material';
-import Header from './Header/Header';
+import Banner from './Banner/Banner';
 import NavBar from './Header/NavBar';
 
 const Home = () => {
@@ -24,11 +24,10 @@ const Home = () => {
         );
 
         const { status, user } = data;
-        
+
         setUsername(user);
         return status;
       } catch (error) {
-       
         console.error('Error verifying token:', error);
         navigate('/auth');
       }
@@ -44,18 +43,13 @@ const Home = () => {
 
   return (
     <div className="home_page">
+      <NavBar onLogoutOut={Logout} userData={username} />
       <Box>
-        <NavBar 
-        onLogoutOut={Logout}
-        userData = {username}
-        />
-        {/* <Header/> */}
+        <h2>Hello</h2>
       </Box>
-      <nav>
-        <section>
-          <span>MedFist</span>
-        </section>
-      </nav>
+      <Box>
+        <Banner />
+      </Box>
     </div>
   );
 };

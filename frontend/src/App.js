@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./component/account/Login";
 import Home from "./component/Pages/Home";
 function App() {
-  // const [isAuthenticate, isUserAuthenticate] = useState(false);
   return (
     <div style={{ marginTop: 20 }}>
       <Routes>
