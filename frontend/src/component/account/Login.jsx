@@ -56,7 +56,7 @@ const SignUpInitialValues = {
   password: ''
 }
 
-const Login = ({isUserAuthenticate}) => {
+const Login = () => {
   const navigate = useNavigate();
   const [account, toggleAccount] = useState('login');
   const [signup, setSignup] = useState(SignUpInitialValues);
@@ -127,18 +127,11 @@ const Login = ({isUserAuthenticate}) => {
       console.log(data);
 
       if (data.success) {
-        // alert('Login successful.');
         navigate("/") 
-        sessionStorage.setItem('accessToken', `Bearer ${data.accessToken}`);
-        sessionStorage.setItem('refreshToken', `Bearer ${data.refreshToken}`);
-
         setLoginVal({
           email: "",
           password: ""
-        }); // Clear input fields
-            
-        isUserAuthenticate(true);
-        
+        }); // Clear input fields        
       } else {
         alert('Incorrect Email/Password');
       }

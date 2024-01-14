@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../Header/NavBar';
 import { FormControl,Box, InputBase, Button, TextareaAutosize } from '@mui/material';
 import styled from '@emotion/styled';
@@ -52,6 +52,20 @@ const IntialPost = {
 const CreatePost = ({ onLogOut,userName }) => {
   const url = 'https://cdn.pixabay.com/photo/2017/04/08/22/26/buddhism-2214532_1280.jpg';
   const[post,setPost]  = useState(IntialPost);
+  const [file,setFile] = useState('');
+  useEffect(()=>{
+    const geImage = () =>{
+      if(file)
+      {
+        const data = new FormData()
+        data.append('name', file.name);
+        data.append('file', file);
+
+        post.picture = ''
+      }
+    }
+    geImage()
+  },[file])
   const handleOnChange = (e) =>{
     setPost({...post, [e.target.name]: e.target.value})
   }
@@ -64,7 +78,11 @@ const CreatePost = ({ onLogOut,userName }) => {
           <label htmlFor='InputFile'>
             <Add fontSize='large' color='action'/>
           </label>
-          <input type='file' id='InputFile' style={{display: 'none'}}></input>
+          <input type='file' 
+          id='InputFile' 
+          style={{display: 'none'}}
+          onChange={(e)=>setFile(e.target.files[0])}
+          ></input>
           <InputtextField placeholder='title' onChange={(e)=> handleOnChange(e)} name='title'></InputtextField>
           <PublishButton>Publish</PublishButton>
         </FromStyle>
