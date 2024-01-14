@@ -127,7 +127,7 @@ const Login = ({isUserAuthenticate}) => {
       console.log(data);
 
       if (data.success) {
-        alert('Login successful.');
+        // alert('Login successful.');
         navigate("/") 
         sessionStorage.setItem('accessToken', `Bearer ${data.accessToken}`);
         sessionStorage.setItem('refreshToken', `Bearer ${data.refreshToken}`);

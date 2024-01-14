@@ -6,7 +6,7 @@ dotenv.config();
 
 module.exports.userVerification = (req, res) => {
   const token = req.cookies.token;
-  // console.log("Token from cookie:", token);
+  console.log("Token from cookie:", token);
   if (!token) {
     return res.json({ status: false })
   }
