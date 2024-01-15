@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import NavBar from '../Header/NavBar';
 import { FormControl,Box, InputBase, Button, TextareaAutosize } from '@mui/material';
 import styled from '@emotion/styled';
 import {AddCircle as Add} from "@mui/icons-material";
+import { useLocation } from 'react-router-dom';
 const Image = styled('img')`
   width: 100%;
   height: 60vh;
@@ -53,6 +54,7 @@ const CreatePost = ({ onLogOut,userName }) => {
   const url = 'https://cdn.pixabay.com/photo/2017/04/08/22/26/buddhism-2214532_1280.jpg';
   const[post,setPost]  = useState(IntialPost);
   const [file,setFile] = useState('');
+  const location = useLocation();
   useEffect(()=>{
     const geImage = () =>{
       if(file)
@@ -64,7 +66,9 @@ const CreatePost = ({ onLogOut,userName }) => {
         post.picture = ''
       }
     }
-    geImage()
+    geImage();
+    post.categories = location.search?.split('=')[1] || 'All';
+    post.username = userName;
   },[file])
   const handleOnChange = (e) =>{
     setPost({...post, [e.target.name]: e.target.value})
