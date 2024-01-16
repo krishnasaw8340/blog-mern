@@ -78,22 +78,24 @@ function NavBar({ onLogoutOut, userName }) {
     <MainBody position="static">
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            MedFist
-          </Typography>
+        <StyledLink to="/">
+  <Typography
+    variant="h6"
+    noWrap
+    sx={{
+      mr: 2,
+      display: { xs: 'none', md: 'flex' },
+      fontFamily: 'monospace',
+      fontWeight: 700,
+      letterSpacing: '.3rem',
+      color: 'inherit',
+      textDecoration: 'none',
+    }}
+  >
+    MedFist
+  </Typography>
+</StyledLink>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -137,6 +139,7 @@ function NavBar({ onLogoutOut, userName }) {
               </ContainerMenuMobile>
             </Menu>
           </Box>
+          <StyledLink to='/'>
           <Typography
             variant="h5"
             noWrap
@@ -155,6 +158,7 @@ function NavBar({ onLogoutOut, userName }) {
           >
             MedFist
           </Typography>
+          </StyledLink>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <ContainerMenu>
               <StyledLink to="/">

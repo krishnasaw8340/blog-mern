@@ -16,7 +16,8 @@ module.exports.userVerification = (req, res) => {
       } else {
         try {
           const user = await User.findById(data.id);
-          if (user) return res.json({ status: true, user: user.username });
+          if (user)
+           return res.json({ status: true, user: user.username });
           else return res.json({ status: false });
         } catch (error) {
           console.error("Error parsing JSON data:", error);
