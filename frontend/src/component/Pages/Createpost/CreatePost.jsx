@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import NavBar from '../Header/NavBar';
 import { FormControl,Box, InputBase, Button, TextareaAutosize } from '@mui/material';
 import styled from '@emotion/styled';
+import axios from 'axios';
 import {AddCircle as Add} from "@mui/icons-material";
 import { useLocation } from 'react-router-dom';
 const Image = styled('img')`
@@ -51,25 +52,37 @@ const IntialPost = {
   createdAt: new Date()
 }
 const CreatePost = ({ onLogOut,userName }) => {
-  const url = 'https://cdn.pixabay.com/photo/2017/04/08/22/26/buddhism-2214532_1280.jpg';
+  // const url = 'https://cdn.pixabay.com/photo/2017/04/08/22/26/buddhism-2214532_1280.jpg';
   const[post,setPost]  = useState(IntialPost);
   const [file,setFile] = useState('');
   const location = useLocation();
-  useEffect(()=>{
-    const geImage = () =>{
-      if(file)
-      {
-        const data = new FormData()
-        data.append('name', file.name);
-        data.append('file', file);
-
-        post.picture = ''
-      }
-    }
-    geImage();
-    post.categories = location.search?.split('=')[1] || 'All';
-    post.username = userName;
-  },[file])
+  const url = post.picture ?  post.picture: 'https://cdn.pixabay.com/photo/2017/04/08/22/26/buddhism-2214532_1280.jpg';
+  // const uploadFile = async (data) => {
+  //   try {
+  //     const response = await axios.post("http://localhost:4000/file/upload", data);
+  //     console.log("Response from upload API:", response);  // Add this line for debugging
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log("Error while calling the upload API", error);
+  //     throw error;  // Re-throw the error to propagate it further
+  //   }
+  // };
+  // useEffect(()=>{
+  //   const geImage = async () =>{
+  //     if(file)
+  //     {
+  //       const data = new FormData()
+  //       data.append('name', file.name);
+  //       data.append('file', file);
+       
+  //       const response = await uploadFile(data); 
+  //       post.picture = response.data;
+  //     }
+  //   }
+  //   geImage();
+  //   post.categories = location.search?.split('=')[1] || 'All';
+  //   post.username = userName;
+  // },[file])
   const handleOnChange = (e) =>{
     setPost({...post, [e.target.name]: e.target.value})
   }

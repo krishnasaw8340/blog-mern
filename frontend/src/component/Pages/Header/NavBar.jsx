@@ -30,6 +30,19 @@ const StyledLink = styled(Link)`
     font-size: 1.1em; /* Increase font size on hover */
   }
 `;
+const StyledLinkLogo = styled(Link)`
+  text-decoration: none;
+  padding: 8px;
+  color: inherit;
+  transition: font-size 0.3s ease-in-out;
+
+  &:hover {
+    color: #8C52FF;
+    // background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 1.1em; /* Increase font size on hover */
+  }
+`;
 const ContainerMenu = styled(Box)`
   display:flex;
   flex-direction:row;
@@ -78,7 +91,7 @@ function NavBar({ onLogoutOut, userName }) {
     <MainBody position="static">
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-        <StyledLink to="/">
+        <StyledLinkLogo to="/">
   <Typography
     variant="h6"
     noWrap
@@ -94,7 +107,7 @@ function NavBar({ onLogoutOut, userName }) {
   >
     MedFist
   </Typography>
-</StyledLink>
+</StyledLinkLogo>
 
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -139,7 +152,7 @@ function NavBar({ onLogoutOut, userName }) {
               </ContainerMenuMobile>
             </Menu>
           </Box>
-          <StyledLink to='/'>
+          <StyledLinkLogo to='/'>
           <Typography
             variant="h5"
             noWrap
@@ -158,7 +171,7 @@ function NavBar({ onLogoutOut, userName }) {
           >
             MedFist
           </Typography>
-          </StyledLink>
+          </StyledLinkLogo>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <ContainerMenu>
               <StyledLink to="/">
