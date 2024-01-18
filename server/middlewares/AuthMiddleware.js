@@ -6,7 +6,6 @@ dotenv.config();
 
 module.exports.userVerification = (req, res) => {
   const token = req.cookies.token;
-  console.log("Token from cookie:", token);
   if (!token) {
     return res.json({ status: false })
   }
@@ -17,8 +16,12 @@ module.exports.userVerification = (req, res) => {
         try {
           const user = await User.findById(data.id);
           if (user)
-           return res.json({ status: true, user: user.username });
+          {
+            console.log("Token from cookie:", token);
+            return res.json({ status: true, user: user.username });
+          }
           else return res.json({ status: false });
+         
         } catch (error) {
           console.error("Error parsing JSON data:", error);
           return res.status(400).json({ error: "Invalid token data" });

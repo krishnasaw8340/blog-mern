@@ -11,11 +11,10 @@ const Component = styled(Box)`
 `;
 
 const Image = styled("img")({
-  width: 400,
-  height: 200,
+  width: "100%", // Set the width to 100% to take up the full width of the container
+  height: "10rem", // Automatically adjust the height to maintain the aspect ratio
   objectFit: "contain",
   mixBlendMode: "color-burn",
-  // Lazy loading
   loading: "lazy",
 });
 
@@ -149,7 +148,7 @@ const Login = () => {
         {account === 'login' ? (
           <Wrapper>
             <form onSubmit={handleSubmitLogin}>
-              <TextField>Login to Medfist</TextField>
+              <Text>Login to Medfist</Text>
               <TextField variant="standard" fullWidth id="fullWidth" onChange={onInputChangeLogin} name="email" label="Enter Email" value={loginVal.email} />
               <TextField variant="standard" fullWidth id="fullWidth" type="password" onChange={onInputChangeLogin} name="password" label="Enter password" value={loginVal.password} />
               <Box>
@@ -164,7 +163,7 @@ const Login = () => {
         ) : (
           <Wrapper>
             <form onSubmit={handleSubmitSignup}>
-            <TextField>Create an Account !</TextField>
+            <Text>Create an Account </Text>
               <TextField variant="standard"  fullWidth id="fullWidth"  onChange={onInputChangeSignup} name="email" label="Enter Email" value={signup.email} />
               <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="password" label="Enter password" value={signup.password} type="password" />
               <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="username" label="Enter username" value={signup.username} />
