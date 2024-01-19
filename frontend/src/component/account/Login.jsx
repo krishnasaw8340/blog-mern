@@ -163,7 +163,7 @@ const Login = () => {
         ) : (
           <Wrapper>
             <form onSubmit={handleSubmitSignup}>
-            <Text>Create an Account </Text>
+            <Text>Create an Account MEDFIST </Text>
               <TextField variant="standard"  fullWidth id="fullWidth"  onChange={onInputChangeSignup} name="email" label="Enter Email" value={signup.email} />
               <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="password" label="Enter password" value={signup.password} type="password" />
               <TextField variant="standard"  fullWidth id="fullWidth" onChange={onInputChangeSignup} name="username" label="Enter username" value={signup.username} />
