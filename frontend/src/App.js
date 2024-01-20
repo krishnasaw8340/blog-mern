@@ -69,7 +69,6 @@ function App() {
           path='/about'
           element={username && cookies.token ? <About onLogOut={Logout} userName = {username}/> : <Navigate to="/auth" />}
         />
-        
       </Routes>
     </div>
   );
